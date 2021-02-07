@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-mongoose.connect("mongodb+srv://"+process.env.PASS+"@cluster0.kjv0j.mongodb.net/AsknitrrDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://" + process.env.PASS + "@cluster0.kjv0j.mongodb.net/AsknitrrDB", { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect("mongodb://localhost:27017/AsknitrrDB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 const answerSchema = new mongoose.Schema({
@@ -50,18 +50,18 @@ passport.deserializeUser(function (id, done) {
     });
 });
 app.get("/", (req, res) => {
-    res.render("home" , {login : req.user});
+    res.render("home", { login: req.user });
 });
 app.get("/questions", (req, res) => {
     Question.find({}, (err, found) => {
-        res.render("questions", { questions: found , login : req.user});
+        res.render("questions", { questions: found, login: req.user });
     })
 });
 app.get("/submit/:questionId", (req, res) => {
     if (req.isAuthenticated() || req.user) {
         Question.findOne({ _id: req.params.questionId }, (err, ques) => {
             if (ques) {
-                res.render("submit", { question: ques , login : req.user});
+                res.render("submit", { question: ques, login: req.user });
             }
             else res.send("<h1>404 not found ! </h1>")
         })
@@ -79,62 +79,67 @@ app.get("/questions/:questionId", (req, res) => {
     Question.findOne({ _id: req.params.questionId }, (err, ques) => {
         if (ques) {
             Answer.find({ questionId: req.params.questionId }, (err, ans) => {
-                res.render("question", { question: ques, answers: ans , login : req.user });
+                res.render("question", { question: ques, answers: ans, login: req.user });
             });
         }
         else res.send("<h1>404 not found ! </h1>")
     })
 });
 app.get("/contact", (req, res) => {
-    res.render("contact" , {login : req.user});
+    res.render("contact", { login: req.user });
 });
 app.get("/login", (req, res) => {
-    res.render("login" , {login : req.user});
+    res.render("login", { login: req.user });
 });
-app.post("/login" , (req , res)=>{
+app.post("/login", (req, res) => {
     const user = new User({
-        username : req.body.username , 
-        password : req.body.password
+        username: req.body.username,
+        password: req.body.password
     });
-    req.login(user , err=>{
-        if(err) res.redirect("/login");
-        else 
-        {
-            passport.authenticate("local" , {failureRedirect : "/login"})(req, res , ()=>{
+    req.login(user, err => {
+        if (err) res.redirect("/login");
+        else {
+            passport.authenticate("local", { failureRedirect: "/login" })(req, res, () => {
                 res.redirect("/");
             })
         }
     })
 });
-app.get("/logout" , (req , res)=>{
+app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
 });
 app.get("/interestedtopic", (req, res) => {
-    res.render("interestedTopic" , {login : req.user});
+    res.render("interestedTopic", { login: req.user });
 });
 app.post("/interestedtopic", (req, res) => {
     // console.log(Object.keys(req.body));
-    res.render("signup" , {topics : Object.keys(req.body) , login : req.user});
+    res.render("signup", { topics: Object.keys(req.body), login: req.user });
 });
 app.post("/signup", (req, res) => {
-    User.register({ username: req.body.username }, req.body.password, (err, user) => {
-        if (err) console.log(err);
-        else {
-            user.topics = req.body.topics.split(",");
-            user.save();
-            mail(user.username , "you have been registered to ASKNITRR");
-            passport.authenticate("local")(req, res, () => {
-                res.redirect("/");
+    User.findOne({ username: req.body.username }, (err, found) => {
+        if (found) {
+            res.redirect("/login");
+        } else {
+            User.register({ username: req.body.username }, req.body.password, (err, user) => {
+                if (err) console.log(err);
+                else {
+                    user.topics = req.body.topics.split(",");
+                    user.save();
+                    mail(user.username, "you have been registered to ASKNITRR");
+                    passport.authenticate("local")(req, res, () => {
+                        res.redirect("/");
+                    })
+                }
             })
         }
     })
 });
 app.get("/newquestion", (req, res) => {
-    if (req.isAuthenticated() || req.user ) {
-        res.render("newquestion" , {login : req.user});
+    if (req.isAuthenticated() || req.user) {
+        res.render("newquestion", { login: req.user });
     }
-    else res.redirect("/login");    
+    else res.redirect("/login");
 });
 app.post("/newquestion", (req, res) => {
     const question = new Question({
@@ -147,7 +152,7 @@ app.post("/newquestion", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard" , {login : req.user});
+    res.render("dashboard", { login: req.user });
 });
 
 app.listen(process.env.PORT || 3000, () => {

@@ -149,6 +149,6 @@ app.get("/dashboard", (req, res) => {
     res.render("dashboard" , {login : req.user});
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("server started at given port!");
 });

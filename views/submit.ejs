@@ -1,0 +1,16 @@
+<%- include("partials/header" , {ok : login}); -%>
+<h1>Question : </h1>
+<h3><%= question.heading%> </h3>
+<p><%=question.discription %></p>
+<h3>SUBMIT ANSWER : </h3>
+<!-- form to new ques -->
+<form action="/submit" method="POST">
+    <div class="form-group">
+        <input type="hidden" name="questionId" value="<%= question._id %>">
+        <label for="answer">Your Answer : </label>
+        <textarea name="answer" id="" cols="30" rows="10" class="form-control" required autocomplete="off">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Publish</button>
+</form>
+<%- include("./partials/footer.ejs"); -%>

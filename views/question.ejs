@@ -1,0 +1,17 @@
+<%- include("partials/header" , {ok : login}); -%>
+<h1>Question : </h1>
+<h3><%= question.heading%> </h3>
+<p><%=question.discription %></p>
+<h1>Answers : </h1>
+<ol>
+    <% answers.forEach((ans)=>{ %>
+        <li><p> <%= ans.answer %></p></li>
+    <% }) %>
+</ol>
+
+<button class="btn " >
+    <a class="btn " href="/submit/<%=question.id%>"> Submit Your Answer!
+  </a>
+</button>
+
+<%- include("./partials/footer.ejs"); -%>

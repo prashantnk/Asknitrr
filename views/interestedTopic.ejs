@@ -1,0 +1,40 @@
+<%- include("partials/header" , {ok : login}); -%>
+<h1>Before You move forward , please , Choose Your Interested Topics : </h1>
+
+<form action="/interestedtopic" method="POST">
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="WEB DEVELOPMENT" aria-label="...">
+              WEB DEVELOPMENT
+            </label>
+          </div><div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="APP DEVELOPMENT" aria-label="...">
+              APP DEVELOPMENT</label>
+          </div><div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="COMPETITIVE PROGRAMMING" aria-label="...">
+              COMPETITIVE PROGRAMMING</label>
+          </div><div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="DSA" aria-label="...">
+              DSA</label>
+          </div><div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="SEMESTER" aria-label="...">
+              SEMESTER</label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="blankCheckbox" name="OTHERS.." aria-label="...">
+              OTHERS..</label>
+          </div>
+        </div>
+    
+      <button class="btn btn-primary" type="submit">GO!</button>
+</form>
+
+
+<footer> <sup>*</sup> It will help us to feature questions for you!</footer>
+<%- include("./partials/footer.ejs"); -%>

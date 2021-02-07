@@ -1,0 +1,13 @@
+<%- include("partials/header" , {ok : login}); -%>
+<h3>ALL ASKED QUESTIONS : </h3>
+<!-- code for array  -->
+<% questions.forEach((question)=>{ %>
+    <h5> <%=question.topic%> : <%= question.heading.substr(0 , 50)%> 
+        <a href="/questions/<%=question.id%>">read more....</a>
+        <button class="btn " >
+            <a class="btn " href="/submit/<%=question.id%>"> Submit Answer!
+          </a>
+        </button>
+    </h5>
+<% }) %>
+<%- include("./partials/footer.ejs"); -%>

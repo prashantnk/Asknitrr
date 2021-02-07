@@ -1,0 +1,46 @@
+<%- include("partials/header" , {ok : login}); -%>
+<h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" required autofocus name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" required class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+          <h3>Note : If You haven't registered yet , please register here :
+            <button class="btn btn-dark"  role="link">
+                <a class="btn btn-block" href="/interestedtopic">SignUp</a>
+            </button>
+          </h3>
+          
+          <p> </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+            <button class="btn btn-block" >
+            <a class="btn btn-block" href="/auth/google">
+            <i class="fab fa-google"></i>
+            Sign In with Google
+          </a>
+        </button>
+        </div>
+      </div>
+    </div>
+</div>
+<%- include("./partials/footer.ejs"); -%>

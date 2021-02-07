@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-const { mail } = require('./mailer');
+const { mail } = require(__dirname + '/mailer');
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
 app.use(session({

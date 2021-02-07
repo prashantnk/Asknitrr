@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const { mail } = require('./mailer');
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
 app.use(session({
@@ -49,7 +50,6 @@ passport.deserializeUser(function (id, done) {
     });
 });
 app.get("/", (req, res) => {
-    // console.log(req.user);
     res.render("home" , {login : req.user});
 });
 app.get("/questions", (req, res) => {
@@ -123,6 +123,7 @@ app.post("/signup", (req, res) => {
         else {
             user.topics = req.body.topics.split(",");
             user.save();
+            mail(user.username , "you have been registered to ASKNITRR");
             passport.authenticate("local")(req, res, () => {
                 res.redirect("/");
             })

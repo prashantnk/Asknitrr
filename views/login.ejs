@@ -1,47 +1,57 @@
 <%- include("partials/header" , {ok : login}); -%>
-<h1>Login</h1>
+<main id="main">
+<section class="breadcrumbs">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
-
-          <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" required autofocus name="username">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" required class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-dark">Login</button>
-          </form>
-          <h3>Note : If You have already registered , so you are redirected here.</h3>
-          <h3>If you haven't registered , please register here :
-            <button class="btn btn-dark"  role="link">
-                <a class="btn btn-block" href="/interestedtopic">SignUp</a>
-            </button>
-          </h3>
-          
-          <p> </p>
-
-        </div>
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li>LogIn</li>
+    </ol>
+    <h2>LOG IN</h2>
+  </div>
+</section><!-- End Breadcrumbs -->
+<section class="inner-page">
+  <div class="containerlogin">
+  <div class="loginbox"> <img src="https://i.imgur.com/ZYzTdD0.png" class="avatar">
+    <h1 id="loginh1">Login Here</h1>
+    <form method="post" action="/login">
+        <p>Email</p> <input type="email" name="username" placeholder="Enter Email"required autofocus>
+        <p>Password</p> <input type="password" name="password" required placeholder="Enter Password"> 
+        <input type="submit" name="" value="Login"> 
+        <a href="#">Lost your password?</a><br> 
+        <a href="/interestedtopic">Don't have an account?</a>
+        <div class="google">
+        <a href="#">
+        <button type="button">
+        <img src="https://www.iconfinder.com/data/icons/social-media-2210/24/Google-512.png" style="width:30px; background:white; border-radius:50%;" alt="">
+        <b>Sign In With Google</b></button>
+      </a>
       </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-            <button class="btn btn-block" >
-            <a class="btn btn-block" href="/auth/google">
-            <i class="fab fa-google"></i>
-            Sign In with Google
-          </a>
-        </button>
-        </div>
-      </div>
-    </div>
+    </form>
 </div>
+</div>
+<section id="about" class="about" >
+  <div class="container" data-aos="fade-up">
+    <div class="row gx-0">
+      <div class="col-lg-6 d-flex flex-column justify-content-center" id="main-about"data-aos="fade-up" data-aos-delay="200">
+        <div class="content" >
+          <h3>Note : </h3>
+          <h2>If you haven't registered , please register here :</h2>
+          <div class="text-center text-lg-start">
+            <a href="/interestedtopic" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>Sign Up</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <p>
+            * If you are redirected here , Your Email is already Registered !.            
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End About Section -->
+</section>
 <%- include("./partials/footer.ejs"); -%>

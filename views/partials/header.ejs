@@ -1,34 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>Ask Nitrr</title>
-  <link rel = "icon" href =  "http://nitrr.ac.in/images/nitrr.gif" 
-        type = "image/x-icon"> 
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <p class="navbar-brand"><a href="/">ASKNITRR</a></p>
-      </div>
-        <ul class="nav navbar-nav navbar-right">
-          <!-- 6 -->
-          <li id="home"><a href="/questions">ALL QUESTIONS</a></li>
-          <li id="compose"><a href="/newquestion">ASK A QUESTION</a></li> 
-          <% if(ok) { %>
-            <li id="about"><a href="/logout"> LOGOUT </a></li>
-         <% }else { %>
-             <li id="about"><a href="/login"> LOGIN </a></li>       
-          <% } %>               
-          <li id="contact"><a href="/contact">CONTACT US</a></li>
-        </ul>
-    </div>
-  </nav>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <body>
-    <div class="container"> 
+  <title>ASKNITRR</title>
+  <meta content="" name="description">
+
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel = "icon" href =  "http://nitrr.ac.in/images/nitrr.gif" type = "image/x-icon"> 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/mystyle.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="http://nitrr.ac.in/images/nitrr.gif" alt="">
+        <span>ASKNITRR</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/questions">All Questions</a></li>
+          <li><a class="nav-link scrollto" href="/newquestion">Ask Query</a></li>
+          <li class="dropdown"><a href="#"><span>Topics</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Competitive Programming</a></li>
+              <li><a href="#">Data Structures And Algo</a></li>
+              <li><a href="#">App Development</a></li>
+              <li><a href="#">Semester</a></li>
+              <li><a href="#">Others</a></li>
+              
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <% if(ok) { %>
+            <li><a class="getstarted scrollto" href="/logout"> LOGOUT </a></li>
+         <% }else { %>
+            <li><a class="getstarted scrollto" href="/login"> LOGIN </a></li>       
+          <% } %> 
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header --> 

@@ -1,13 +1,66 @@
 <%- include("partials/header" , {ok : login}); -%>
-<h3>ALL ASKED QUESTIONS : </h3>
-<!-- code for array  -->
-<% questions.forEach((question)=>{ %>
-    <h5> <%=question.topic%> : <%= question.heading.substr(0 , 50)%> 
-        <a href="/questions/<%=question.id%>">read more....</a>
-        <button class="btn " >
-            <a class="btn " href="/submit/<%=question.id%>"> Submit Answer!
-          </a>
-        </button>
-    </h5>
-<% }) %>
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Questions</li>
+        </ol>
+        <h2>ASKED QUESTIONS : </h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-8 entries">
+            <% questions.forEach((question)=>{ %>
+                <article class="entry" id="main-article">
+                    <h2><%=question.topic%></h2>
+                    <h2 class="entry-title">
+                      <a href="/questions/<%=question.id%>">
+                        <%= question.heading%></a>
+                    </h2>
+                    <div class="entry-content">
+                      <p> <%= question.discription.substr(0 , 100)%>
+                        </p>
+                      <div class="read-more">
+                        <a href="/questions/<%=question.id%>">Read More</a>
+                        <a href="/submit/<%=question.id%>">Submit Answer!</a>
+                      </div>
+                    </div>
+                  </article>
+            <% }) %>
+            <!-- End blog entry -->
+        </div> 
+        <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Categories</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">DSA <span>(25)</span></a></li>
+                  <li><a href="#">Web Development <span>(12)</span></a></li>
+                  <li><a href="#">App Development <span>(5)</span></a></li>
+                  <li><a href="#">Competitive Programming <span>(22)</span></a></li>
+                  <li><a href="#">Semester <span>(8)</span></a></li>
+                  <li><a href="#">Others<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+              </div><!-- End sidebar recent posts-->
+            </div><!-- End sidebar -->
+        </div> </div> 
+        </section>
 <%- include("./partials/footer.ejs"); -%>

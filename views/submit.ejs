@@ -1,16 +1,57 @@
 <%- include("partials/header" , {ok : login}); -%>
-<h1>Question : </h1>
-<h3><%= question.heading%> </h3>
-<p><%=question.discription %></p>
-<h3>SUBMIT ANSWER : </h3>
-<!-- form to new ques -->
-<form action="/submit" method="POST">
-    <div class="form-group">
-        <input type="hidden" name="questionId" value="<%= question._id %>">
-        <label for="answer">Your Answer : </label>
-        <textarea name="answer" id="" cols="30" rows="10" class="form-control" required autocomplete="off">
-        </textarea>
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                    <li><a href="/questions">Questions</a></li>
+                    <li>Question</li>
+                </ol>
+                <h2>Solution : </h2>
+            </div>
+        </section>
+        <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+            <div class="col-lg-8 entries">
+            <article class="entry entry-single">
+            <h2 class="entry-title">
+                <a href="/questions/<%=question.id%>">
+                        <%= question.heading%></a>
+                </h2>
+                <div class="entry-content">
+                    <p> <%= question.discription%>
+                        </p>
+                        </div>
+                    </article>
+                </div> 
+            </div>
+        </div><!-- End sidebar recent posts-->
+  </section>
+  <section class="inner-page">
+    <div class="container">
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up" id="container-up">
+                <header class="section-header">
+                    <h2>Answer </h2>
+                    <p>Submit Answer </p>
+                </header>
+                <div class="col-lg-6" id="main-contact">
+                    <form action="/submit" method="post" class="php-email-form">
+                        <input type="hidden" name="questionId" value="<%= question._id %>">
+                        <div class="row gy-4">
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="answer" rows="6" placeholder="Your Answer , (atleast 100 words is recommended)"
+                                    required></textarea>
+                            </div>
+                            <div class="col-md-12 text-center">  
+                                <button type="submit">Publish</button>
+                              </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section><!-- End Contact Section -->
     </div>
-    <button type="submit" class="btn btn-primary">Publish</button>
-</form>
-<%- include("./partials/footer.ejs"); -%>
+</section>
+<%- include("./partials/footer.ejs"); -%> 

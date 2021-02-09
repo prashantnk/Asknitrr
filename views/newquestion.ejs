@@ -1,24 +1,57 @@
 <%- include("partials/header" , {ok : login}); -%>
-<h3>NEW QUESTION : </h3>
-<!-- form to new ques -->
-<form action="/newquestion" method="POST">
-    <div class="form-group">
-        <label for="topic">Question Topic </label>
-        <select class="form-control" name="topic">
-            <option selected>Choose...</option>
-            <option>WEB DEVELOPMENT</option>
-            <option>APP DEVELOPMENT</option>
-            <option>COMPETITIVE PROGRAMMING</option>
-            <option>DSA</option>
-            <option>SEMESTER</option>
-            <option>OTHERS..</option>
-        </select>
-        <label for="heading">Question Heading </label>
-        <input type="text" required autocomplete="off" name="heading" class="form-control">
-        <label for="question">Question Description</label>
-        <textarea name="question" id="" cols="30" rows="10" class="form-control" required autocomplete="off">
-        </textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Publish</button>
-</form>
-<%- include("./partials/footer.ejs"); -%>
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>New Question</li>
+            </ol>
+            <h2>New Question</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section class="inner-page">
+        <div class="container">
+            <section id="contact" class="contact">
+                <div class="container" data-aos="fade-up" id="container-up">
+                    <header class="section-header">
+                        <h2>Question</h2>
+                        <p>New Question </p>
+                    </header>
+                    <div class="col-lg-6" id="main-contact">
+                        <form action="/newquestion" method="post" class="php-email-form">
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <select class="form-control" name="topic" aria-placeholder="Question Topic">
+                                        <option selected>Choose Question Topic</option>
+                                        <option>WEB DEVELOPMENT</option>
+                                        <option>APP DEVELOPMENT</option>
+                                        <option>COMPETITIVE PROGRAMMING</option>
+                                        <option>DSA</option>
+                                        <option>SEMESTER</option>
+                                        <option>OTHERS..</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="heading" placeholder="Question Heading"
+                                        required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" name="question" rows="6" placeholder="Question Description , (atleast 100 words is recommended) "
+                                        required></textarea>
+                                </div>
+                                <div class="col-md-12 text-center">  
+                                    <button type="submit">Publish</button>
+                                  </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </section><!-- End Contact Section -->
+        </div>
+
+    </section>
+
+
+    <%- include("./partials/footer.ejs"); -%>

@@ -15,7 +15,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,7 +50,9 @@ passport.deserializeUser(function (id, done) {
     });
 });
 app.get("/", (req, res) => {
-    res.render("home", { login: req.user });
+    Question.aggregate([{$sample : {size : 6}}] , (err , found)=>{
+        res.render("home", { questions : found , login: req.user });
+    })    
 });
 app.get("/questions", (req, res) => {
     Question.find({}, (err, found) => {
@@ -158,3 +160,10 @@ app.get("/dashboard", (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
     console.log("server started at given port!");
 });
+
+app.post("/contact" , (req , res)=>{
+    res.send("NOT ACTIVE NOW ! ");
+})
+app.post("/subscribe" , (req , res)=>{
+    res.send("NOT ACTIVE NOW ! ");
+})

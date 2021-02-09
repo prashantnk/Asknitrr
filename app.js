@@ -34,7 +34,9 @@ const questionSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     topics: [String],
     username: String,
-    password: String
+    password: String,
+    fname : String,
+    lname : String
 });
 userSchema.plugin(passportLocalMongoose);
 const Question = new mongoose.model("Question", questionSchema);
@@ -56,6 +58,7 @@ app.get("/", (req, res) => {
 });
 app.get("/questions", (req, res) => {
     Question.find({}, (err, found) => {
+        found.reverse();
         res.render("questions", { questions: found, login: req.user });
     })
 });
@@ -81,6 +84,7 @@ app.get("/questions/:questionId", (req, res) => {
     Question.findOne({ _id: req.params.questionId }, (err, ques) => {
         if (ques) {
             Answer.find({ questionId: req.params.questionId }, (err, ans) => {
+                ans.reverse();
                 res.render("question", { question: ques, answers: ans, login: req.user });
             });
         }
@@ -127,6 +131,8 @@ app.post("/signup", (req, res) => {
                 if (err) console.log(err);
                 else {
                     user.topics = req.body.topics.split(",");
+                    user.fname = req.body.first;
+                    user.lname = req.body.last;
                     user.save();
                     mail(user.username, "you have been registered to ASKNITRR");
                     passport.authenticate("local")(req, res, () => {

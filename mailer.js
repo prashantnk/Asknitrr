@@ -8,7 +8,7 @@ const redirectUri = process.env.REDIRECT_URI;
 const RefreshToken = process.env.REFRESH_TOKEN;
 const user = process.env.USERMAILER;
 
-function sendmail(accessToken , email , msg)
+function sendmail(accessToken , email , msg , subject)
 {
     const transporter = nodemailer.createTransport({
         service : "gmail",
@@ -22,17 +22,17 @@ function sendmail(accessToken , email , msg)
         }
     });
     transporter.sendMail({
-        from: "",
+        from: "ASKNITRR",
         to: email,
-        subject: 'ASKNITRR',
+        subject: subject + "<ASKNITRR>",
         text: msg,
     });
 }
-exports.mail = (email , text )=>{
+exports.mail = (email , text , subject)=>{
     const oauthClient = new google.auth.OAuth2(clientId , clientSecret , redirectUri);
     oauthClient.setCredentials({refresh_token: RefreshToken});
     oauthClient.getAccessToken().then((found)=>{
-        sendmail(found.res.data.access_token , email , text);
+        sendmail(found.res.data.access_token , email , text , subject);
     }).catch(error => { throw error});
 };
 

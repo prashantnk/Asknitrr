@@ -29,7 +29,20 @@
                         <% answers.forEach((ans)=>{ %>
                             <article class="entry" id="main-article">                                
                                 <div class="entry-content">
-                               <li> <p> <%= ans.answer %></p> </li>
+                               <li> <p style="white-space: pre-line"> <%= ans.answer %></p> 
+                               <div class="read-more">
+                                <form action="/upvote" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%=ans._id%>">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm"><i class="fas fa-angle-up"><%=ans.vote || 0%></i></button>
+                                </form> 
+                                <%if(login) if(login.id == ans.userId){ %>
+                                  <form action="/delete" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%=ans._id%>">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                  </form>                      
+                                <%}%>                    
+                              </div>
+                            </li>
                             </div> 
                             </article>
                         <% }) %>

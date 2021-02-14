@@ -1,5 +1,5 @@
 <%- include("partials/header" , {ok : login}); -%>
-<main id="main">
+  <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
       <div class="container">
@@ -8,7 +8,8 @@
           <li><a href="/">Home</a></li>
           <li>Questions</li>
         </ol>
-        <h2>ASKED QUESTIONS : </h2>
+        <h2>ASKED QUESTIONS : <%=topic%>
+        </h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -18,25 +19,40 @@
         <div class="row">
           <div class="col-lg-8 entries">
             <% questions.forEach((question)=>{ %>
-                <article class="entry" id="main-article">
-                    <h2><%=question.topic%></h2>
-                    <h2 class="entry-title">
-                      <a href="/questions/<%=question.id%>">
-                        <%= question.heading%></a>
-                    </h2>
-                    <div class="entry-content">
-                      <p> <%= question.discription.substr(0 , 100)%>
-                        </p>
-                      <div class="read-more">
-                        <a href="/questions/<%=question.id%>">Read More</a>
-                        <a href="/submit/<%=question.id%>">Submit Answer!</a>
-                      </div>
-                    </div>
-                  </article>
-            <% }) %>
-            <!-- End blog entry -->
-        </div> 
-        <div class="col-lg-4">
+              <article class="entry" id="main-article">
+                <h2>
+                  <%=question.topic%>
+                </h2>
+                <h2 class="entry-title">
+                  <a href="/questions/<%=question.id%>">
+                    <%= question.heading%>
+                  </a>
+                </h2>
+                <div class="entry-content">
+                  <p>
+                    <%= question.discription.substr(0 , 100)%>
+                  </p>            
+                           
+                  <div class="read-more">
+                    <form action="/upvote" method="POST" style="display: inline;">
+                      <input type="hidden" name="id" value="<%=question._id%>">
+                      <button type="submit" class="btn btn-outline-secondary btn-sm"><i class="fas fa-angle-up"><%=question.vote || 0%></i></button>
+                  </form>
+                    <a href="/questions/<%=question.id%>">Read More</a>
+                    <a href="/submit/<%=question.id%>">Submit Answer!</a>
+                    <%if(login) if(login.id == question.userId){ %>
+                      <form action="/delete" method="POST" style="display: inline;">
+                        <input type="hidden" name="id" value="<%=question._id%>">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                      </form>                      
+                    <%}%>                    
+                  </div>
+                </div>
+              </article>
+              <% }) %>
+                <!-- End blog entry -->
+          </div>
+          <div class="col-lg-4">
 
             <div class="sidebar">
 
@@ -51,16 +67,17 @@
               <h3 class="sidebar-title">Categories</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="#">DSA <span>(25)</span></a></li>
-                  <li><a href="#">Web Development <span>(12)</span></a></li>
-                  <li><a href="#">App Development <span>(5)</span></a></li>
-                  <li><a href="#">Competitive Programming <span>(22)</span></a></li>
-                  <li><a href="#">Semester <span>(8)</span></a></li>
-                  <li><a href="#">Others<span>(14)</span></a></li>
+                  <li><a href="/questions/topics/Web Development">Web Development</a></li>
+                  <li><a href="/questions/topics/Competitive Programming">Competitive Programming</a></li>
+                  <li><a href="/questions/topics/DSA">Data Structures And Algo</a></li>
+                  <li><a href="/questions/topics/App Development">App Development</a></li>
+                  <li><a href="/questions/topics/Semester">Semester</a></li>
+                  <li><a href="/questions/topics/Others..">Others</a></li>
                 </ul>
               </div><!-- End sidebar categories-->
-              </div><!-- End sidebar recent posts-->
-            </div><!-- End sidebar -->
-        </div> </div> 
-        </section>
-<%- include("./partials/footer.ejs"); -%>
+            </div><!-- End sidebar recent posts-->
+          </div><!-- End sidebar -->
+        </div>
+      </div>
+    </section>
+    <%- include("./partials/footer.ejs"); -%>

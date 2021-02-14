@@ -22,7 +22,7 @@
   <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/mystyle.css" rel="stylesheet">
@@ -46,13 +46,12 @@
           <li><a class="nav-link scrollto" href="/newquestion">Ask Query</a></li>
           <li class="dropdown"><a href="#"><span>Topics</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Web Development</a></li>
-              <li><a href="#">Competitive Programming</a></li>
-              <li><a href="#">Data Structures And Algo</a></li>
-              <li><a href="#">App Development</a></li>
-              <li><a href="#">Semester</a></li>
-              <li><a href="#">Others</a></li>
-              
+              <li><a href="/questions/topics/Web Development">Web Development</a></li>
+              <li><a href="/questions/topics/Competitive Programming">Competitive Programming</a></li>
+              <li><a href="/questions/topics/DSA">Data Structures And Algo</a></li>
+              <li><a href="/questions/topics/App Development">App Development</a></li>
+              <li><a href="/questions/topics/Semester">Semester</a></li>
+              <li><a href="/questions/topics/Others..">Others</a></li>              
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -66,6 +65,7 @@
                   <% } %> 
             </span> <i class="bi bi-chevron-down"></i></a>
               <ul>
+                <li><a href="#"> Contribution : <%=ok.contribution || 0%> </a></li>
                 <li><a class="getstarted scrollto" href="/logout"> LOGOUT </a></li>                                
               </ul>           
          <% }else { %>

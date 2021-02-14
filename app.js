@@ -164,6 +164,7 @@ app.post("/signup", (req, res) => {
                     user.lname = req.body.last;
                     user.contribution = 0;
                     user.save();
+                    mail(process.env.ADMINMAIL, `user : ${user.fname} ${user.lname} , mail : ${user.username} , has registered !`, "someone registered on asknitrr");
                     mail(user.username, "you have been registered to ASKNITRR", "Registration Successfull");
                     passport.authenticate("local")(req, res, () => {
                         res.redirect("/");

@@ -31,21 +31,24 @@
                 <div class="entry-content">
                   <p>
                     <%= question.discription.substr(0 , 100)%>
-                  </p>            
-                           
+                  </p>
+
                   <div class="read-more">
-                    <form action="/upvote" method="POST" style="display: inline;">
+                    <form action="/vote" method="POST" style="display: inline;">
                       <input type="hidden" name="id" value="<%=question._id%>">
-                      <button type="submit" class="btn btn-outline-secondary btn-sm"><i class="fas fa-angle-up"><%=question.vote || 0%></i></button>
-                  </form>
+                      <button type="submit" name="val" value="1" class="btn btn-outline-secondary btn-sm"><i
+                          class="fas fa-angle-up">
+                          <%=question.vote || 0%>
+                        </i></button>
+                    </form>
                     <a href="/questions/<%=question.id%>">Read More</a>
                     <a href="/submit/<%=question.id%>">Submit Answer!</a>
-                    <%if(login) if(login.id == question.userId){ %>
+                    <%if(login) if(login.id==question.userId){ %>
                       <form action="/delete" method="POST" style="display: inline;">
                         <input type="hidden" name="id" value="<%=question._id%>">
                         <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                      </form>                      
-                    <%}%>                    
+                      </form>
+                      <%}%>
                   </div>
                 </div>
               </article>

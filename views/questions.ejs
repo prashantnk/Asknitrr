@@ -8,7 +8,7 @@
           <li><a href="/">Home</a></li>
           <li>Questions</li>
         </ol>
-        <h2>ASKED QUESTIONS : <%=topic%>
+        <h2>ASKED QUESTIONS : <%=topic || text%>
         </h2>
 
       </div>
@@ -59,10 +59,10 @@
 
             <div class="sidebar">
 
-              <h3 class="sidebar-title">Search</h3>
+              <h3 class="sidebar-title">Search Question</h3>
               <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
+                <form action="/search" method="get">
+                  <input type="text" name="text" value="<%=text%>">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search formn-->

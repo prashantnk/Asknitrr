@@ -9,14 +9,14 @@ const { mail } = require('../mailer');
 router.get("/questions", (req, res) => {
     Question.find({}, (err, found) => {
         found.reverse();
-        res.render("questions", { questions: found, login: req.user, topic: "" });
+        res.render("questions", { questions: found, login: req.user, topic: "", text: "" });
     })
 });
 router.get("/questions/topics/:topic", (req, res) => {
     Question.find({ topic: req.params.topic.toUpperCase() }, (err, found) => {
         //console.log(req.params.topic);
         found.reverse();
-        res.render("questions", { questions: found, login: req.user, topic: req.params.topic });
+        res.render("questions", { questions: found, login: req.user, topic: req.params.topic, text: "" });
     })
 });
 router.get("/submit/:questionId", (req, res) => {
@@ -88,5 +88,13 @@ router.post("/delete", (req, res) => {
     Answer.deleteMany({ questionId: id }, (err) => { });
     res.redirect(req.headers.referer);
 });
+
+router.get("/search", (req, res) => {
+    const text = req.query.text;
+    Question.find({ $text: { $search: text } })
+        .exec(function (err, docs) {
+            res.render("questions", { questions: docs, login: req.user, topic: "", text: text });
+        });
+})
 
 module.exports = router;

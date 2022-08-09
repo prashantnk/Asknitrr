@@ -5,11 +5,13 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We Are here to solve your queries.</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">You Can ask any question and Your Question will be answered by the students of the NITRR.</h2>
+          <h1 data-aos="fade-up">We are here to solve your queries.</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">You can ask any question and your question will be answered by the
+            students of NITRR.</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="/newquestion" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="/newquestion"
+                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Get Started</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -38,11 +40,14 @@
           <% questions.forEach((ques)=>{ %>
             <div class="col-lg-4">
               <div class="post-box">
-                <h3 class="post-title"><%= ques.heading %></h3>
-                <a href="/questions/<%=ques._id%>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                <h3 class="post-title">
+                  <%= ques.heading %>
+                </h3>
+                <a href="/questions/<%=ques._id%>" class="readmore stretched-link mt-auto"><span>Read More</span><i
+                    class="bi bi-arrow-right"></i></a>
               </div>
             </div>
-         <% }) %>
+            <% }) %>
         </div>
       </div>
 
@@ -51,98 +56,112 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
 
-        <div class="container" data-aos="fade-up">
-  
-          <header class="section-header">
-            <h2>Topics : </h2>
-            <p>Read questions on specific topics :</p>
-          </header>
-  
-          <div class="row gy-4">
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="service-box blue">
-                <i class="ri-discuss-line icon"></i>
-                <h3>Web Development</h3>
-                <p>Web programming, also known as web development, is the creation of dynamic web applications.</p>
-                <a href="/questions/topics/Web Development" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="service-box orange">
-                <i class="ri-discuss-line icon"></i>
-                <h3>App Development</h3>
-                <p>Mobile application development is the process to making software for smartphones and digital assistants, most commonly for Android and iOS.</p>
-                <a href="/questions/topics/App Development" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-box green">
-                <i class="ri-discuss-line icon"></i>
-                <h3>Data Structures And Algorithms</h3>
-                <p>Data Structure is a way of collecting and organising data in such a way that we can perform operations on these data in an effective way.</p>
-                <a href="/questions/topics/DSA" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-              <div class="service-box red">
-                <i class="ri-discuss-line icon"></i>
-                <h3>Competitive Programming</h3>
-                <p>
-                    Competitive programmers use their knowledge of algorithms and data structures and logical reasoning skills.</p>
-                <a href="/questions/topics/Competitive Programming" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-              <div class="service-box purple">
-                <i class="ri-discuss-line icon"></i>
-                <h3>Semester</h3>
-                <p>a half-year term in a school or university, especially in North America, typically lasting for fifteen to eighteen weeks.</p>
-                <a href="/questions/topics/Semester" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-              <div class="service-box pink">
-                <i class="ri-discuss-line icon"></i>
-                <h3>Others/Entertainment</h3>
-                <p>the action of providing or being provided with amusement or enjoyment.</p>                
-                <a href="/questions/topics/Others.." class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-  
-          </div>
-  
-        </div>
-  
-      </section><!-- End Services Section -->
-      <section id="about" class="about" >
+      <div class="container" data-aos="fade-up">
 
-        <div class="container" data-aos="fade-up">
-          <div class="row gx-0">
-  
-            <div class="col-lg-6 d-flex flex-column justify-content-center" id="main-about"data-aos="fade-up" data-aos-delay="200">
-              <div class="content" >
-                <h3>Who We Are</h3>
-                <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
-                <p>
-                  Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
-                </p>
-                <div class="text-center text-lg-start">
-                  <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                    <span>Read More</span>
-                    <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
+        <header class="section-header">
+          <h2>Topics : </h2>
+          <p>Read questions on specific topics :</p>
+        </header>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box blue">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Web Development</h3>
+              <p>Web programming, also known as web development, is the creation of dynamic web applications.</p>
+              <a href="/questions/topics/Web Development" class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-        </div>
-  
-      </section><!-- End About Section -->
 
-  <%- include("./partials/footer.ejs"); -%>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-box orange">
+              <i class="ri-discuss-line icon"></i>
+              <h3>App Development</h3>
+              <p>Mobile application development is the process to making software for smartphones and digital
+                assistants, most commonly for Android and iOS.</p>
+              <a href="/questions/topics/App Development" class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-box green">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Data Structures And Algorithms</h3>
+              <p>Data Structure is a way of collecting and organising data in such a way that we can perform operations
+                on these data in an effective way.</p>
+              <a href="/questions/topics/DSA" class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box red">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Competitive Programming</h3>
+              <p>
+                Competitive programmers use their knowledge of algorithms and data structures and logical reasoning
+                skills.</p>
+              <a href="/questions/topics/Competitive Programming" class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-box purple">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Semester</h3>
+              <p>a half-year term in a school or university, especially in North America, typically lasting for fifteen
+                to eighteen weeks.</p>
+              <a href="/questions/topics/Semester" class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="service-box pink">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Others/Entertainment</h3>
+              <p>the action of providing or being provided with amusement or enjoyment.</p>
+              <a href="/questions/topics/Others.." class="read-more"><span>Read More</span> <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Services Section -->
+    <!-- <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" id="main-about" data-aos="fade-up"
+            data-aos-delay="200">
+            <div class="content">
+              <h3>Who We Are</h3>
+              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti
+                reprehenderit.</h2>
+              <p>
+                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur
+                itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="#"
+                  class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Read More</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>End About Section -->
+
+    <%- include("./partials/footer.ejs"); -%>

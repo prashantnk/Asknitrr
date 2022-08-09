@@ -8,6 +8,8 @@ const questionSchema = new mongoose.Schema({
     vote: Number
 }, { timestamps: true });
 
+questionSchema.index({ '$**': 'text' });
+
 const Question = new mongoose.model("Question", questionSchema);
 
 module.exports = Question;

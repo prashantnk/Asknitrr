@@ -6,12 +6,14 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const { use } = require('passport');
-const { mail } = require(__dirname + '/mailer');
+const { mail } = require('./mailer');
 const Question = require('./models/question');
 const Answer = require('./models/answer');
 const User = require('./models/user');
 const Voter = require('./models/voter');
 const NewsletterUser = require('./models/newsLetter');
+
+
 const app = express();
 
 
@@ -53,6 +55,7 @@ passport.deserializeUser(function (id, done) {
 
 //routes
 app.get("/", (req, res) => {
+    console.log(req.user);
     Question.aggregate([{ $sample: { size: 6 } }], (err, found) => {
         res.render("home", { questions: found, login: req.user });
     })
@@ -154,6 +157,7 @@ app.post("/vote", (req, res) => {
                                 found.save();
                                 user.save();
                                 vote.save();
+                                res.redirect(req.headers.referer);
                             }
                         });
                     }
@@ -170,11 +174,11 @@ app.post("/vote", (req, res) => {
                         if (user.contribution) user.contribution++;
                         else user.contribution = 1;
                         user.save();
+                        res.redirect(req.headers.referer);
                     }
                 })
             }
         });
-        res.redirect(req.headers.referer);
     }
 });
 

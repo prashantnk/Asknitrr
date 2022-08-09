@@ -1,9 +1,9 @@
 <%- include("partials/header" , {ok : login}); -%>
-<main id="main">
-    <section class="breadcrumbs">
-        <div class="container">
-            <ol>
-                <li><a href="/">Home</a></li>
+    <main id="main">
+        <section class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/questions">Questions</a></li>
                     <li>Question</li>
                 </ol>
@@ -11,45 +11,54 @@
             </div>
         </section>
         <section id="blog" class="blog">
-        <div class="container" data-aos="fade-up">
-            <div class="row">
-            <div class="col-lg-8 entries">
-            <article class="entry entry-single">
-            <h2 class="entry-title">
-                <a href="/questions/<%=question.id%>">
-                        <%= question.heading%></a>
-                </h2>
-                <div class="entry-content">
-                    <p> <%= question.discription%>
-                        </p>
-                        </div>
-                    </article>
-                    <h1>Answers : </h1>
-                    <ol>
-                        <% answers.forEach((ans)=>{ %>
-                            <article class="entry" id="main-article">                                
-                                <div class="entry-content">
-                               <li> <p style="white-space: pre-line"> <%= ans.answer %></p> 
-                               <div class="read-more">
-                                <form action="/upvote" method="POST" style="display: inline;">
-                                    <input type="hidden" name="id" value="<%=ans._id%>">
-                                    <button type="submit" class="btn btn-outline-secondary btn-sm"><i class="fas fa-angle-up"><%=ans.vote || 0%></i></button>
-                                </form> 
-                                <%if(login) if(login.id == ans.userId){ %>
-                                  <form action="/delete" method="POST" style="display: inline;">
-                                    <input type="hidden" name="id" value="<%=ans._id%>">
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                  </form>                      
-                                <%}%>                    
-                              </div>
-                            </li>
-                            </div> 
-                            </article>
-                        <% }) %>
-                    </ol>
-                    
-                                    </div> 
-                                </div>
-                            </div><!-- End sidebar recent posts-->
-                      </section>
-<%- include("./partials/footer.ejs"); -%>
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-8 entries">
+                        <article class="entry entry-single">
+                            <h2 class="entry-title">
+                                <a href="/questions/<%=question.id%>">
+                                    <%= question.heading%>
+                                </a>
+                            </h2>
+                            <div class="entry-content">
+                                <p>
+                                    <%= question.discription%>
+                                </p>
+                            </div>
+                        </article>
+                        <h1>Answers : </h1>
+                        <ol>
+                            <% answers.forEach((ans)=>{ %>
+                                <article class="entry" id="main-article">
+                                    <div class="entry-content">
+                                        <li>
+                                            <p style="white-space: pre-line">
+                                                <%= ans.answer %>
+                                            </p>
+                                            <div class="read-more">
+                                                <form action="/vote" method="POST" style="display: inline;">
+                                                    <input type="hidden" name="id" value="<%=ans._id%>">
+                                                    <button type="submit" class="btn btn-outline-secondary btn-sm"><i
+                                                            class="fas fa-angle-up">
+                                                            <%=ans.vote || 0%>
+                                                        </i></button>
+                                                </form>
+                                                <%if(login) if(login.id==ans.userId){ %>
+                                                    <form action="/delete" method="POST" style="display: inline;">
+                                                        <input type="hidden" name="id" value="<%=ans._id%>">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    </form>
+                                                    <%}%>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </article>
+                                <% }) %>
+                        </ol>
+
+                    </div>
+                </div>
+            </div><!-- End sidebar recent posts-->
+        </section>
+        <%- include("./partials/footer.ejs"); -%>

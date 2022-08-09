@@ -8,31 +8,30 @@ const redirectUri = process.env.REDIRECT_URI;
 const RefreshToken = process.env.REFRESH_TOKEN;
 const user = process.env.USERMAILER;
 
-function sendmail(accessToken , email , msg , subject)
-{
+const sendmail = async (accessToken, email, msg, subject) => {
     const transporter = nodemailer.createTransport({
-        service : "gmail",
+        service: "gmail",
         auth: {
             type: 'OAuth2',
-            user : user,
+            user: user,
             clientId: clientId,
             clientSecret: clientSecret,
-            refreshToken : RefreshToken,
-            accessToken : accessToken
+            refreshToken: RefreshToken,
+            accessToken: accessToken
         }
     });
     transporter.sendMail({
         from: "ASKNITRR",
         to: email,
-        subject: subject + "<ASKNITRR>",
+        subject: subject + " <ASKNITRR> ",
         text: msg,
     });
 }
-exports.mail = (email , text , subject)=>{
-    const oauthClient = new google.auth.OAuth2(clientId , clientSecret , redirectUri);
-    oauthClient.setCredentials({refresh_token: RefreshToken});
-    oauthClient.getAccessToken().then((found)=>{
-        sendmail(found.res.data.access_token , email , text , subject);
-    }).catch(error => { throw error});
+exports.mail = (email, text, subject) => {
+    const oauthClient = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+    oauthClient.setCredentials({ refresh_token: RefreshToken });
+    oauthClient.getAccessToken().then((found) => {
+        sendmail(found.res.data.access_token, email, text, subject);
+    }).catch(error => { throw error });
 };
 
